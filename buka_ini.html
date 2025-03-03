@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Sayangkuu</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+        color: #4a4a4a;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 500px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: white;
+        position: relative;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .content {
+        padding: 25px;
+        text-align: center;
+      }
+
+      p {
+        margin-bottom: 20px;
+        line-height: 1.7;
+        font-size: 16px;
+      }
+
+      .highlight {
+        font-weight: bold;
+        color: #9370db;
+      }
+
+      .heart {
+        position: absolute;
+        pointer-events: none;
+        animation: fall linear forwards;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+
+      .photo-frame {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .photo-text {
+        font-size: 40px;
+        color: #9370db;
+      }
+
+      .message-box {
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+        border-left: 4px solid #9370db;
+      }
+
+      .btn {
+        background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        margin: 10px 5px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .firework {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: firework-animation 2s ease-out forwards;
+      }
+
+      @keyframes firework-animation {
+        0% {
+          transform: translate(0, 0);
+          opacity: 1;
+          width: 5px;
+          height: 5px;
+        }
+        100% {
+          transform: translate(var(--tx), var(--ty));
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+      }
+
+      .cake {
+        width: 100px;
+        height: 80px;
+        position: relative;
+        margin: 30px auto;
+        background: #f99;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: center;
+        box-shadow: 0 5px 0 #e88;
+      }
+
+      .cake:before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        margin-left: -2.5px;
+        width: 5px;
+        height: 20px;
+        background: #ff0;
+        border-radius: 5px 5px 0 0;
+        box-shadow: 10px 0 #ff0, 20px 0 #ff0, -10px 0 #ff0, -20px 0 #ff0;
+      }
+
+      .cake:after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        margin-left: -15px;
+        width: 30px;
+        height: 10px;
+        background: #f99;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .candle {
+        background: #ff0;
+        width: 5px;
+        height: 35px;
+        position: absolute;
+        top: -35px;
+        border-radius: 2.5px 2.5px 0 0;
+      }
+
+      .flame {
+        background: #f40;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: -40px;
+        left: -2.5px;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        animation: flicker 0.5s infinite alternate;
+      }
+
+      @keyframes flicker {
+        0% {
+          transform: rotate(-45deg) scale(1);
+        }
+        100% {
+          transform: rotate(-45deg) scale(0.9);
+        }
+      }
+
+      /* Blow Candle Modal */
+      .blow-candle-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .blow-candle-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+        position: relative;
+      }
+
+      .blow-candle-cake {
+        width: 150px;
+        height: 120px;
+        position: relative;
+        margin: 30px auto;
+        background: #f99;
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 8px 0 #e88;
+      }
+
+      .blow-candle-cake:before {
+        content: "";
+        position: absolute;
+        top: -25px;
+        left: 50%;
+        margin-left: -3px;
+        width: 6px;
+        height: 25px;
+        background: #ff0;
+        border-radius: 5px 5px 0 0;
+        box-shadow: 15px 0 #ff0, 30px 0 #ff0, -15px 0 #ff0, -30px 0 #ff0;
+      }
+
+      .blow-candle-flame {
+        background: #f40;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: -35px;
+        left: 67px;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        animation: flicker 0.5s infinite alternate;
+      }
+
+      .blow-instruction {
+        font-size: 18px;
+        margin: 20px 0;
+        color: #9370db;
+      }
+
+      .blow-btn {
+        background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .blow-air {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        top: 190px;
+        left: 170px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .wind-effect {
+        position: absolute;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+        width: 20px;
+        height: 6px;
+        opacity: 0;
+      }
+
+      .memories-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 100;
+        padding: 40px 20px;
+        overflow-y: auto;
+      }
+
+      .memories-content {
+        background: white;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 15px;
+        position: relative;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #9370db;
+      }
+
+      .memory {
+        margin-bottom: 30px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+      }
+
+      .memory:last-child {
+        border-bottom: none;
+      }
+
+      .memory h3 {
+        color: #9370db;
+        margin-bottom: 10px;
+      }
+
+      .memory-photo {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        object-fit: cover;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .floating-hearts {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Countdown animation */
+      .countdown {
+        font-size: 60px;
+        color: #9370db;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        z-index: 200;
+      }
+
+      /* Love Letter Styles */
+      .letter-container {
+        text-align: center;
+        margin-top: 10px;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .letter {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 450px;
+        z-index: 300;
+        animation: letter-appear 0.6s ease;
+      }
+
+      @keyframes letter-appear {
+        0% {
+          transform: translate(-50%, -50%) scale(0.7);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+      }
+
+      .letter-content {
+        background: linear-gradient(135deg, #fff5f5 0%, #ffe0e0 100%);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        position: relative;
+        border: 1px solid #ffccd5;
+      }
+
+      .letter-content:before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 2px dashed #ffaabb;
+        border-radius: 18px;
+        pointer-events: none;
+      }
+
+      .letter h2 {
+        color: #9370db;
+        margin-bottom: 20px;
+        font-size: 22px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .letter p {
+        line-height: 1.8;
+        margin-bottom: 25px;
+        color: #555;
+        font-size: 16px;
+      }
+
+      /* Audio Message Styles */
+      .audio-container {
+        text-align: center;
+        margin-top: 10px;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .audio-player {
+        display: none;
+        width: 100%;
+        max-width: 500px;
+        background: linear-gradient(135deg, #ffd6f3 0%, #ffadda 100%);
+        border-radius: 15px;
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        animation: fade-in 0.5s ease;
+        position: relative;
+      }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .audio-player h3 {
+        color: #9370db;
+        margin-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .audio-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .play-pause-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+      }
+
+      .play-pause-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .audio-message {
+        width: 100%;
+        margin-top: 20px;
+        height: 40px;
+      }
+
+      .audio-player .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #9370db;
+        cursor: pointer;
+      }
+
+      .audio-wave {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3px;
+        height: 40px;
+        margin: 10px 0;
+      }
+
+      .audio-wave .bar {
+        background: #9370db;
+        width: 4px;
+        height: 15px;
+        border-radius: 2px;
+        animation: sound-wave 0.5s infinite alternate;
+      }
+
+      @keyframes sound-wave {
+        0% {
+          height: 5px;
+        }
+        100% {
+          height: 30px;
+        }
+      }
+
+      .audio-wave .bar:nth-child(2n) {
+        animation-delay: 0.2s;
+      }
+
+      .audio-wave .bar:nth-child(3n) {
+        animation-delay: 0.4s;
+      }
+
+      /* Modal Overlay */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 250;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 24px;
+        }
+
+        .photo-frame {
+          width: 180px;
+          height: 180px;
+        }
+
+        .btn {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+
+        .blow-candle-flame {
+          left: 67px;
+        }
+
+        .letter-content {
+          padding: 20px;
+        }
+
+        .letter h2 {
+          font-size: 20px;
+        }
+
+        .letter p {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="countdown" id="countdown">3</div>
+
+    <div class="floating-hearts" id="floating-hearts"></div>
+
+    <div class="container">
+      <div class="header">
+        <h1>Selamat Ulang Tahun Sayangku Sigit Fadhila ❤️</h1>
+      </div>
+
+      <div class="content">
+        <div class="photo-frame">
+          <div class="photo-text">❤️</div>
+        </div>
+
+        <div class="cake">
+          <div class="candle"></div>
+          <div class="flame" id="flame"></div>
+        </div>
+
+        <p>
+          Untuk seseorang yang <span class="highlight">sangat istimewa</span> di
+          hidupku...
+        </p>
+
+        <div class="message-box">
+          <p>
+            Di hari spesialmu ini, aku pengen kamu tahu betapa berartinya kamu
+            dalam hidupku. Setiap hari bisa bersamamu adalah anugerah.
+            Kebaikanmu, senyummu, dan cintamu membuat duniaku menjadi tempat
+            yang lebih indah. Sayangku semoga kedepannya lebih baik lagi yaa
+            dalam hal apapun itu. Hadapi susah senengnya bareng-bareng sama aku.
+          </p>
+          <p>
+            Semoga tambah usiamu dipenuhi dengan
+            <span class="highlight">kebahagiaan</span>,
+            <span class="highlight">kesehatan</span>, dan segala
+            <span class="highlight">impian</span> yang pengen kamu wujudkan.
+          </p>
+          <p class="highlight">
+            Kamu adalah definisi SEMPURNA bagi aku. Aku cinta kamu sepenuh hati
+            dan semoga kedepannya cinta kamu ngga akan habis buat aku❤️
+          </p>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+          "
+        >
+          <button class="btn" id="memories-btn">💝 Kenangan Kita</button>
+          <button class="btn" id="open-letter-btn">💌 Buka Surat Cinta</button>
+          <button class="btn" id="play-audio-btn">🎤 Dengarkan Pesanku</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <!-- Love Letter Modal -->
+    <div class="letter" id="letter">
+      <div class="letter-content">
+        <h2>💝 Untuk Suamiku Tercinta 💝</h2>
+        <p>
+          Sayangku, setiap hari bersamamu adalah hadiah terbesar dalam hidupku.
+          Aku bersyukur bisa berbagi kebahagiaan, kesedihan, dan impian
+          bersamamu. Aku pengen banget kamu selalu bahagia, karena bahagiamu
+          adalah bahagiaku. Kalo bisa kurangin yaa marah-marahnya hehe.
+        </p>
+
+        <p>
+          Sayangku doaku ngga akan jauh jauh dari tahun sebelumnya. Semoga
+          rejeki kamu selalu dilancarkan, semoga panjang umur dan sehat selalu,
+          selamat dunia akhirat, hidup bahagia dan menua sama aku dan keluarga
+          kecil kita, tambah sayang sama aku, semua impian kamu bisa tercapai,
+          berkah hidupnya dan rejekinya, semoga bisa lebih baik dalam segala
+          hal, dan terakhir semoga rasa cinta kamu ngga akan berkurang sampai
+          aku tua.
+        </p>
+
+        <p>Aku cinta kamu selamanya sayangku ❤️</p>
+
+        <button class="btn" id="close-letter-btn">Tutup Surat</button>
+      </div>
+    </div>
+
+    <!-- Audio Player -->
+    <div class="audio-player" id="audio-player">
+      <span class="close-btn" id="close-audio">&times;</span>
+      <h3>Pesan Spesial Untuk Kamu</h3>
+
+      <div class="audio-wave" id="audio-wave">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div class="audio-controls">
+        <button class="play-pause-btn" id="play-pause-btn">▶️</button>
+      </div>
+
+      <audio id="voice-message" src="audioku.mp3"></audio>
+    </div>
+
+    <!-- Blow Candle Modal -->
+    <div class="blow-candle-modal" id="blow-candle-modal">
+      <div class="blow-candle-content">
+        <div class="blow-candle-cake">
+          <div class="blow-candle-flame" id="blow-candle-flame"></div>
+        </div>
+        <div class="blow-instruction">
+          Tiup lilinnya dengan menekan tombol di bawah!
+        </div>
+        <button class="blow-btn" id="blow-btn">💨 Tiup Lilin</button>
+
+        <!-- Wind effects -->
+        <div class="blow-air" id="blow-air">
+          <div class="wind-effect" style="left: 0; top: 10px"></div>
+          <div class="wind-effect" style="left: 15px; top: 5px"></div>
+          <div class="wind-effect" style="left: 25px; top: 12px"></div>
+          <div class="wind-effect" style="left: 10px; top: 20px"></div>
+          <div class="wind-effect" style="left: 20px; top: 25px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="memories-container" id="memories-container">
+      <div class="memories-content">
+        <span class="close-btn" id="close-memories">&times;</span>
+        <h2 style="text-align: center; margin-bottom: 20px; color: #9370db">
+          Kenangan Indah Kita
+        </h2>
+
+        <div class="memory">
+          <h3>Pertemuan Pertama</h3>
+          <div class="memory-photo">
+            <img
+              src="pertama_ketemu.jpg"
+              alt="Pertemuan Pertama"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <p>
+            Masih ingat saat pertama kali kita ketemu ngga? Hari itu mengubah
+            seluruh hidup aku. Semua perlakuanmu ke aku ubah hidup aku.
+          </p>
+        </div>
+
+        <div class="memory">
+          <h3>Kencan Pertama</h3>
+          <div class="memory-photo">
+            <img
+              src="pertama_kencan.jpg"
+              alt="Kencan Pertama"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <p>
+            Kita makan mie ayam di tengah hujan, ketawa kaya ngga ada bebannya.
+            Momen sederhana yang kerasa begitu sempurna.
+          </p>
+        </div>
+
+        <div class="memory">
+          <h3>Petualangan Kita</h3>
+          <div class="memory-photo">
+            <img
+              src="petualangan1.jpg"
+              alt="Petualangan Kita"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <p>
+            Setiap perjalanan sama kamu adalah petualangan. Dari plesir pantai
+            sampe tersesat di kota baru, semua jadi cerita indah dan kenangan
+            baru karena ada kamu.
+          </p>
+        </div>
+
+        <div class="memory">
+          <h3>Saat-Saat Sulit</h3>
+          <div class="memory-photo">
+            <img
+              src="masa_sulit.jpg"
+              alt="Saat-Saat Sulit"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <p>
+            Bahkan dalam masa tersulit, kita selalu bersama. Dukunganmu ngasih
+            kekuatan buat terus melangkah.
+          </p>
+        </div>
+
+        <div class="memory">
+          <h3>Impian Masa Depan</h3>
+          <div class="memory-photo">
+            <img
+              src="impian.jpg"
+              alt="Impian Masa Depan"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <p>
+            Aku menantikan semua petualangan berikutnya sama kamu. Setiap tahun
+            bersamamu lebih baik dari tahun sebelumnya. Impian aku adalah kita
+            bisa jalanin rumah tangga yang sakinah mawadah warahmah.
+          </p>
+          <br /><br />
+          <p>
+            Intinya perjalanan kita masih panjang, Sayangku semoga kamu
+            diberikan panjang umur dan kesehatan yaa biar kita bisa jalanin
+            kehidupan bareng sampe kita tua. Love You❤️
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Countdown function
+      let count = 3;
+      const countdownEl = document.getElementById("countdown");
+
+      const countdownInterval = setInterval(() => {
+        count--;
+        countdownEl.textContent = count;
+
+        if (count <= 0) {
+          clearInterval(countdownInterval);
+          countdownEl.style.display = "none";
+          startHeartAnimation();
+
+          // Show blow candle modal automatically after countdown
+          setTimeout(() => {
+            document.getElementById("blow-candle-modal").style.display = "flex";
+          }, 1000);
+        }
+      }, 1000);
+
+      // Create floating hearts
+      function startHeartAnimation() {
+        const colors = ["#FF75A0", "#FF5677", "#FFDFDF", "#B76E79", "#FF9E9E"];
+        const heartsContainer = document.getElementById("floating-hearts");
+
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.innerHTML = "❤️";
+          heart.style.position = "absolute";
+          heart.style.fontSize = Math.random() * 20 + 10 + "px";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.opacity = Math.random() * 0.7 + 0.3;
+          heart.style.animation =
+            "float " + (Math.random() * 10 + 5) + "s linear infinite";
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+          heart.style.transform =
+            "translateY(" + (Math.random() * 20 + 80) + "vh)";
+
+          heartsContainer.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 15000);
+        }, 800);
+
+        // Add keyframes for floating animation
+        const style = document.createElement("style");
+        style.innerHTML = `
+                @keyframes float {
+                    0% {
+                        transform: translateY(100vh) scale(1);
+                    }
+                    100% {
+                        transform: translateY(-100px) scale(0.5);
+                    }
+                }
+            `;
+        document.head.appendChild(style);
+      }
+
+      // Blow candle button click
+      document
+        .getElementById("blow-btn")
+        .addEventListener("click", function () {
+          const blowCandleFlame = document.getElementById("blow-candle-flame");
+          const blowAir = document.getElementById("blow-air");
+
+          // Show blowing effect
+          blowAir.style.opacity = "1";
+
+          // Animate wind effects
+          const windEffects = document.querySelectorAll(".wind-effect");
+          windEffects.forEach((effect, index) => {
+            setTimeout(() => {
+              effect.style.opacity = "1";
+              effect.style.animation = `wind ${0.5 + index * 0.1}s forwards`;
+
+              // Add keyframes for wind animation
+              const style = document.createElement("style");
+              style.innerHTML = `
+        @keyframes wind {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(30px, -10px) scale(2);
+                opacity: 0;
+            }
+        }
+    `;
+              document.head.appendChild(style);
+            }, index * 100);
+          });
+
+          // Hide the flame after animation
+          setTimeout(() => {
+            blowCandleFlame.style.display = "none";
+
+            // Show fireworks
+            createFireworks();
+
+            // Close modal after fireworks
+            setTimeout(() => {
+              document.getElementById("blow-candle-modal").style.display =
+                "none";
+            }, 3000);
+          }, 1000);
+        });
+
+      // Create fireworks effect
+      function createFireworks() {
+        const colors = ["#FF6B6B", "#4ECDC4", "#FFE66D", "#FF9F1C", "#A5BBFF"];
+        const modal = document.getElementById("blow-candle-modal");
+
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => {
+            const firework = document.createElement("div");
+            firework.className = "firework";
+            firework.style.left = "50%";
+            firework.style.top = "40%";
+            firework.style.backgroundColor =
+              colors[Math.floor(Math.random() * colors.length)];
+
+            // Random direction
+            const tx = (Math.random() - 0.5) * 300;
+            const ty = (Math.random() - 0.5) * 300;
+            firework.style.setProperty("--tx", tx + "px");
+            firework.style.setProperty("--ty", ty + "px");
+
+            modal.appendChild(firework);
+
+            setTimeout(() => {
+              firework.remove();
+            }, 2000);
+          }, i * 50);
+        }
+      }
+
+      // Open memories
+      document
+        .getElementById("memories-btn")
+        .addEventListener("click", function () {
+          document.getElementById("memories-container").style.display = "block";
+        });
+
+      // Close memories
+      document
+        .getElementById("close-memories")
+        .addEventListener("click", function () {
+          document.getElementById("memories-container").style.display = "none";
+        });
+
+      // Open love letter
+      document
+        .getElementById("open-letter-btn")
+        .addEventListener("click", function () {
+          document.getElementById("modal-overlay").style.display = "block";
+          document.getElementById("letter").style.display = "block";
+        });
+
+      // Close love letter
+      document
+        .getElementById("close-letter-btn")
+        .addEventListener("click", function () {
+          document.getElementById("modal-overlay").style.display = "none";
+          document.getElementById("letter").style.display = "none";
+        });
+
+      // Open audio player
+      document
+        .getElementById("play-audio-btn")
+        .addEventListener("click", function () {
+          document.getElementById("modal-overlay").style.display = "block";
+          document.getElementById("audio-player").style.display = "block";
+
+          // Show animation only when playing
+          const audioWave = document.getElementById("audio-wave");
+          audioWave.style.display = "none";
+        });
+
+      // Close audio player
+      document
+        .getElementById("close-audio")
+        .addEventListener("click", function () {
+          const audio = document.getElementById("voice-message");
+          audio.pause();
+          document.getElementById("play-pause-btn").innerHTML = "▶️";
+          document.getElementById("modal-overlay").style.display = "none";
+          document.getElementById("audio-player").style.display = "none";
+          document.getElementById("audio-wave").style.display = "none";
+        });
+
+      // Play/pause audio
+      const playPauseBtn = document.getElementById("play-pause-btn");
+      const audio = document.getElementById("voice-message");
+      const audioWave = document.getElementById("audio-wave");
+
+      playPauseBtn.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play();
+          playPauseBtn.innerHTML = "⏸️";
+          audioWave.style.display = "flex";
+        } else {
+          audio.pause();
+          playPauseBtn.innerHTML = "▶️";
+          audioWave.style.display = "none";
+        }
+      });
+
+      // Close overlay when clicking outside modals
+      document
+        .getElementById("modal-overlay")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.style.display = "none";
+            document.getElementById("letter").style.display = "none";
+
+            const audio = document.getElementById("voice-message");
+            audio.pause();
+            document.getElementById("play-pause-btn").innerHTML = "▶️";
+            document.getElementById("audio-player").style.display = "none";
+            document.getElementById("audio-wave").style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>
